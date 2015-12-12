@@ -18,6 +18,11 @@ class GroupsController < ApplicationController
 
   end
 
+  def show
+    @group = Group.find(params[:id])
+
+  end
+
   def edit
     @group = Group.find(params[:id])
 
@@ -34,12 +39,11 @@ class GroupsController < ApplicationController
 
   end
 
-  def show
+  def destroy
     @group = Group.find(params[:id])
 
-  end
-
-  def destroy
+    @group.destroy
+    redirect_to groups_path, alert: '討論版已刪除'
 
   end
 
